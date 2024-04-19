@@ -4,8 +4,10 @@ const app = express();
 const PORT = 3000;
 
 const redisClient = redis.createClient({
-    host: 'redis', // 注意這裡使用的是服務名稱
-    port: 6379
+    socket: {
+        host: "redis", // 注意這裡使用的是服務名稱
+        port: 6379
+    }
 });
 
 redisClient.on('error', (err) => console.log('Redis Client Error', err));
