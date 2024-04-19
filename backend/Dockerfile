@@ -1,20 +1,20 @@
-# 使用 node:14 镜像作为基础镜像
+# 使用 node:14 為 base image
 FROM node:14
 
-# 设置工作目录
+# 設定預設的目錄
 WORKDIR /app
 
-# 复制 package.json 和 package-lock.json (如果存在)
+# 複製 package.json 和 package-lock.json
 COPY package*.json ./
 
-# 安装依赖
+# 安裝 npm 套件
 RUN npm install
 
-# 复制剩余的后端应用源代码
+# 複製目前目錄下所有檔案到 docker 預設目錄下(/app)
 COPY . .
 
-# 暴露端口3000供外部访问
+# 公開 3000 port 讓外部連線
 EXPOSE 3000
 
-# 设置容器启动后执行的命令
+# 設定 docker 打開後的指令
 CMD ["node", "index.js"]
