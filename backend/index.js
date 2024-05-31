@@ -14,6 +14,13 @@ redisClient.on('error', (err) => console.log('Redis Client Error', err));
 
 redisClient.connect();
 
+const args = process.argv.slice(2);
+console.log('Arguments:', args);
+
+app.get('/', (req, res) => {
+    res.send(`Arguments: ${args.join(' ')}`);
+});
+
 app.get('/count', async (req, res) => {
     const count = await redisClient.get('counter') || 0;
     res.json({ count });

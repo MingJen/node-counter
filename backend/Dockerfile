@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # 設定 docker 打開後的指令
-CMD ["node", "index.js"]
+ENTRYPOINT ["node", "index.js"]
